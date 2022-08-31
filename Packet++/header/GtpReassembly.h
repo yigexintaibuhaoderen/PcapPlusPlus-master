@@ -14,8 +14,8 @@ namespace pcpp
 class GtpPacketData
 {
   public:
-	GtpPacketData(const uint8_t *udpData, size_t udpDataLength, std::string tupleName)
-		: m_Data(udpData), m_DataLen(udpDataLength), m_TupleName(tupleName)
+	GtpPacketData(const uint8_t *gtpData, size_t gtpDataLength, std::string tupleName)
+		: m_Data(gtpData), m_DataLen(gtpDataLength), m_TupleName(tupleName)
 	{
 	}
 
@@ -47,7 +47,7 @@ class GTPReassembly
 	 * @typedef OnGtpMessageReady
 	 * A callback invoked when new data arrives
 	 */
-	typedef void (*OnGtpMessageReady)(pcpp::GtpPacketData *udpData, void *userCookie);
+	typedef void (*OnGtpMessageReady)(pcpp::GtpPacketData *gtpData, void *userCookie);
 
 	/**
 	 * An enum representing the status returned from processing a fragment

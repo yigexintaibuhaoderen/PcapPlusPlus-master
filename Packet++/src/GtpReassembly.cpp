@@ -24,7 +24,7 @@ std::string GTPReassembly::getTupleName(IPAddress src, IPAddress dst)
 	std::replace(sourceIP.begin(), sourceIP.end(), ':', '_');
 	std::replace(destIP.begin(), destIP.end(), ':', '_');
 
-	std::string protocol("udp");
+	std::string protocol("gtp");
 	// 文件
 	stream << sourceIP << '-' << destIP <<  '-' << protocol;
 
