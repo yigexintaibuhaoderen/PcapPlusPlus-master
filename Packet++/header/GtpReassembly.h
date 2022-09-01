@@ -57,6 +57,7 @@ class GTPReassembly
 		NonIpPacket,
 		NonGtpPacket,
 		GtpMessageHandled,
+		NonUdpPacket,
 	};
 
 	GTPReassembly(OnGtpMessageReady onGtpMessageReadyCallback, void *callbackUserCookie = NULL)
@@ -69,21 +70,23 @@ class GTPReassembly
 
 	ReassemblyStatus reassemblePacket(RawPacket *gtpRawData);
 
-	std::string getTupleName(IPAddress src, IPAddress dst);
+	std::string getTupleName(IPAddress src, IPAddress dst,uint16_t srcPort, uint16_t dstPort);
 
   private:
 	struct GTPReassemblyData
 	{
 		IPAddress srcIP;
 		IPAddress dstIP;
+		uint16_t srcPort;
+		uint16_t dstPort;
 		std::string tupleName;
 		uint16_t number;
 
 		GTPReassemblyData()
 		{
 		}
-		GTPReassemblyData(IPAddress src, IPAddress dst, std::string tName, uint16_t n)
-			: srcIP(src), dstIP(dst), tupleName(tName), number(n)
+		GTPReassemblyData(IPAddress src, IPAddress dst, uint16_t srcP, uint16_t dstP, std::string tName, uint16_t n)
+			: srcIP(src), dstIP(dst), srcPort(srcP), dstPort(dstP), tupleName(tName), number(n)
 		{
 		}
 	};
