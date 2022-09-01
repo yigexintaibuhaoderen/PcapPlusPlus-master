@@ -2,6 +2,7 @@
 #define PCAPPP_LRU_LIST
 
 #include <map>
+#include <cstddef>
 #include <list>
 
 #if __cplusplus > 199711L || _MSC_VER >= 1800

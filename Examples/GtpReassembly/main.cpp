@@ -86,11 +86,22 @@ class GlobalConfig
 	// max number of allowed open files in each point in time
 	size_t maxOpenFiles;
 
-	// ++++++ok
-	/**
-	 * Open a file stream. Inputs are the filename to open and a flag indicating whether to append to an existing file
-	 * or overwrite it. Return value is a pointer to the new file stream
-	 */
+	
+	std::string getFileName(std::string name)
+	{
+		std::stringstream stream;
+
+		// if user chooses to write to a directory other than the current directory - add the dir path to the return
+		// value
+		if (!outputDir.empty())
+			stream << outputDir << SEPARATOR;
+
+		stream << name;
+
+		// return the file path
+		return stream.str();
+	}
+
 	std::ostream *openFileStream(std::string fileName, bool reopen)
 	{
 		// if the user chooses to write only to console, don't open anything and return std::cout
@@ -103,7 +114,6 @@ class GlobalConfig
 		else
 			return new std::ofstream(fileName.c_str(), std::ios_base::binary);
 	}
-
 	//++++++ok
 	/**
 	 * Close a file stream
@@ -332,8 +342,8 @@ static void OnGtpMessageReadyCallback(pcpp::GtpPacketData *gtpData, void *userCo
 		// 2.3 
 
 		// get the file name according to the 3-tuple etc.
-		std::string fileName = gtpData->getTupleName() + ".txt";
-
+		std::string name = gtpData->getTupleName() + ".txt";
+		std::string fileName = GlobalConfig::getInstance().getFileName(name);
 		// 2.4
 
 		// open the file in overwrite mode (if this is the first time the file is opened) or in append mode (if it was already opened before)
