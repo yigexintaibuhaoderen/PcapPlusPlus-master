@@ -66,7 +66,9 @@ GTPReassembly::ReassemblyStatus GTPReassembly::reassemblePacket(Packet &gtpData)
 	}
 	else
 		return NonIpPacket;
-		
+
+		//UDP层与IP层相同，通过将reverseOrder设置为true，
+		//获取gtp包内层的UDP层
 	uint16_t srcPort,dstPort;
 	if (gtpData.isPacketOfType(UDP))
 	{
