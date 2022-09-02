@@ -62,10 +62,11 @@ GTPReassembly::ReassemblyStatus GTPReassembly::reassemblePacket(Packet &gtpData)
 		const IPLayer *ipLayer = gtpData.getLayerOfType<IPLayer>(true);
 		srcIP = ipLayer->getSrcIPAddress();
 		dstIP = ipLayer->getDstIPAddress();
-	    PCPP_LOG_ERROR(srcIP);
+	    //PCPP_LOG_ERROR(srcIP);
 	}
 	else
 		return NonIpPacket;
+		
 	uint16_t srcPort,dstPort;
 	if (gtpData.isPacketOfType(UDP))
 	{

@@ -158,7 +158,7 @@ class GlobalConfig
 };
 
 //++++++ok
-// 存储某一三元组的数据包
+// 存储某一五元组的数据包
 /**
  * A struct to contain all data save on a specific connection. It contains the file streams to write to and also stats
  * data on the connection
@@ -212,7 +212,7 @@ struct GtpReassemblyData
 	}
 };
 
-// 三元组->数据统计的map
+// 五元组->数据统计的map
 // typedef representing the manager and its iterator
 typedef std::map<std::string, GtpReassemblyData> GtpReassemblyMgr;
 typedef std::map<std::string, GtpReassemblyData>::iterator GtpReassemblyMgrIter;
@@ -284,16 +284,15 @@ void listInterfaces()
 
 static void OnGtpMessageReadyCallback(pcpp::GtpPacketData *gtpData, void *userCookie)
 {
-/* 	1. manager 存 TcpReassemblyData   									yes
-	2. manager 的指定 TcpReassemblyData 里边fileStream 是否为NULL
+/* 	1. manager 存 GtpReassemblyData   									yes
+	2. manager 的指定 GtpReassemblyData 里边fileStream 是否为NULL
 		2.1 将当前（指传入的参数）的名称加入opened列表
 		2.2 如果打开的文件已达上限，关闭目前的
 		2.3 设置文件名
 		2.4 打开文件， 模式由之前2.2设置的reopenFileStreams决定
-	3. 更改TcpReassemblyData里的统计值
+	3. 更改GtpReassemblyData里的统计值
 	4. 将数据写入打开的文件里
  */
-
 
 	// 1.
 
