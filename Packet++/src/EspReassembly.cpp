@@ -47,7 +47,7 @@ ESPReassembly::ReassemblyStatus ESPReassembly::reassemblePacket(Packet &espData)
 
     // connection list -》 tuple list
 /* 	
-    1. 获取目标包的内层的源IP、端口号和目的IP、端口号， 过滤非目标包
+    1. 获取目标包的内层的源IP和目的IP， 过滤非目标包
 	2. 更新状态（返回值）
 	3. 设置ESPReassemblyData
 	   计算链接tupleName，在fragment list找目标fragment，若不存在则添加
@@ -59,8 +59,8 @@ ESPReassembly::ReassemblyStatus ESPReassembly::reassemblePacket(Packet &espData)
 	IPAddress srcIP, dstIP;
 	if (espData.isPacketOfType(IP))
 	{
-		//getLayerOfType(bool reverseOrder = false)将reverseOrder设置为true表示倒序获取ip层，
-		//从而获取esp包内层的IP层
+		
+		//获取esp包内层的IP层
 		const IPLayer *ipLayer = espData.getLayerOfType<IPLayer>(true);
 		srcIP = ipLayer->getSrcIPAddress();
 		dstIP = ipLayer->getDstIPAddress();

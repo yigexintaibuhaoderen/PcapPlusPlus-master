@@ -158,7 +158,7 @@ class GlobalConfig
 };
 
 //++++++ok
-// 存储某一元组的数据包
+// 存储某个元组的数据包
 /**
  * A struct to contain all data save on a specific connection. It contains the file streams to write to and also stats
  * data on the connection

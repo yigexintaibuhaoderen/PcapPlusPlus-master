@@ -57,7 +57,7 @@ class ESPReassembly
 		NonIpPacket,
 		NonEspPacket,
 		EspMessageHandled,
-		NonUdpPacket,
+		//NonUdpPacket,
 	};
 
 	ESPReassembly(OnEspMessageReady onEspMessageReadyCallback, void *callbackUserCookie = NULL)
@@ -70,7 +70,7 @@ class ESPReassembly
 
 	ReassemblyStatus reassemblePacket(RawPacket *espRawData);
 
-	//std::string getTupleName(IPAddress src, IPAddress dst,uint16_t srcPort, uint16_t dstPort);
+//	std::string getTupleName(IPAddress src, IPAddress dst,uint16_t srcPort, uint16_t dstPort);
     std::string getTupleName(IPAddress src, IPAddress dst);
 
   private:
@@ -78,8 +78,8 @@ class ESPReassembly
 	{
 		IPAddress srcIP;
 		IPAddress dstIP;
-		//uint16_t srcPort;
-		//uint16_t dstPort;
+	//	uint16_t srcPort;
+	//	uint16_t dstPort;
 		std::string tupleName;
 		uint16_t number;
 
@@ -87,7 +87,7 @@ class ESPReassembly
 		{
 		}
 		ESPReassemblyData(IPAddress src, IPAddress dst, uint16_t srcP, uint16_t dstP, std::string tName, uint16_t n)
-			//: srcIP(src), dstIP(dst), srcPort(srcP), dstPort(dstP), tupleName(tName), number(n)
+		//	: srcIP(src), dstIP(dst), srcPort(srcP), dstPort(dstP), tupleName(tName), number(n)
             : srcIP(src), dstIP(dst), tupleName(tName), number(n)
 		{
 		}
