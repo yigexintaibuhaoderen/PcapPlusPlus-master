@@ -29,6 +29,7 @@ EXAMPLE_TLS_FP       := Examples/TLSFingerprinting
 EXAMPLE_DPDK2        := Examples/DpdkBridge
 EXAMPLE_KNI_PONG     := Examples/KniPong
 EXAMPLE_GTP_REASM    := Examples/GtpReassembly
+EXAMPLE_GTP_REASM    := Examples/EspReassembly
 
 
 UNAME := $(shell uname)
@@ -54,6 +55,7 @@ all: libs
 	@cd $(EXAMPLE_IP_DEFRAG)         && $(MAKE) IPDefragUtil
 	@cd $(EXAMPLE_TLS_FP)            && $(MAKE) TLSFingerprinting
 	@cd $(EXAMPLE_GTP_REASM)         && $(MAKE) GtpReassembly
+	@cd $(EXAMPLE_GTP_REASM)         && $(MAKE) EspReassembly
 ifdef USE_DPDK
 	@cd $(EXAMPLE_DPDK1)             && $(MAKE) DpdkTrafficFilter
 	@cd $(EXAMPLE_DPDK2)             && $(MAKE) DpdkBridge
@@ -78,6 +80,7 @@ endif
 	$(CP) $(EXAMPLE_IP_DEFRAG)/Bin/* ./Dist/examples
 	$(CP) $(EXAMPLE_TLS_FP)/Bin/* ./Dist/examples
 	$(CP) $(EXAMPLE_GTP_REASM)/Bin/* ./Dist/examples
+	$(CP) $(EXAMPLE_ESP_REASM)/Bin/* ./Dist/examples
 ifdef USE_DPDK
 	$(CP) $(EXAMPLE_DPDK1)/Bin/* ./Dist/examples
 	$(CP) $(EXAMPLE_DPDK2)/Bin/* ./Dist/examples
@@ -134,6 +137,7 @@ clean:
 	@cd $(EXAMPLE_TLS_FP)            && $(MAKE) clean
 	@cd $(FUZZERS_HOME)              && $(MAKE) clean
 	@cd $(EXAMPLE_GTP_REASM)         && $(MAKE) clean
+	@cd $(EXAMPLE_ESP_REASM)         && $(MAKE) clean
 ifdef USE_DPDK
 	@cd $(EXAMPLE_DPDK1)             && $(MAKE) clean
 	@cd $(EXAMPLE_DPDK2)             && $(MAKE) clean
