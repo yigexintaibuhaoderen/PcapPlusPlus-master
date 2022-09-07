@@ -392,7 +392,7 @@ static void onPacketArrives(pcpp::RawPacket *packet, pcpp::PcapLiveDevice *dev, 
 
 //++++++ok
 /**
- * The method responsible for TCP reassembly on pcap/pcapng files
+ * The method responsible for GTP reassembly on pcap/pcapng files
  */
 void doGtpReassemblyOnPcapFile(std::string fileName, pcpp::GTPReassembly &gtpReassembly, std::string bpfFilter = "")
 {
@@ -428,7 +428,7 @@ void doGtpReassemblyOnPcapFile(std::string fileName, pcpp::GTPReassembly &gtpRea
 
 //++++++ok
 /**
- * The method responsible for TCP reassembly on live traffic
+ * The method responsible for GTP reassembly on live traffic
  */
 void doGtpReassemblyOnLiveTraffic(pcpp::PcapLiveDevice *dev, pcpp::GTPReassembly &gtpReassembly,
 								  std::string bpfFilter = "")

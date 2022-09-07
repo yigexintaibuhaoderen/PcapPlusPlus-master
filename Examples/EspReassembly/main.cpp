@@ -392,7 +392,7 @@ static void onPacketArrives(pcpp::RawPacket *packet, pcpp::PcapLiveDevice *dev, 
 
 //++++++ok
 /**
- * The method responsible for TCP reassembly on pcap/pcapng files
+ * The method responsible for ESP reassembly on pcap/pcapng files
  */
 void doEspReassemblyOnPcapFile(std::string fileName, pcpp::ESPReassembly &espReassembly, std::string bpfFilter = "")
 {
@@ -428,7 +428,7 @@ void doEspReassemblyOnPcapFile(std::string fileName, pcpp::ESPReassembly &espRea
 
 //++++++ok
 /**
- * The method responsible for TCP reassembly on live traffic
+ * The method responsible for ESP reassembly on live traffic
  */
 void doEspReassemblyOnLiveTraffic(pcpp::PcapLiveDevice *dev, pcpp::ESPReassembly &espReassembly,
 								  std::string bpfFilter = "")
@@ -542,7 +542,7 @@ int main(int argc, char *argv[])
 	// create the object which manages info on all connections
 	EspReassemblyMgr mgr;
 
-	//  create the TCP reassembly instance
+	//  create the ESP reassembly instance
 	pcpp::ESPReassembly espReassembly(OnEspMessageReadyCallback, &mgr);
 
 	// analyze in pcap file mode
